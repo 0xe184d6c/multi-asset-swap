@@ -123,3 +123,15 @@ main().catch((err) => {
 * User: `claimSwap`
 * 1:1 atomic, no counterparty risk.
 
+
+### Swap Flow
+
+1. **Setup**: Creates cryptographic hash-lock using a secret preimage and 1-hour timelock
+2. **Approval**: Both parties approve the swap contract to spend their tokens
+3. **Initiate**: User locks 500 USDX in contract with hash-lock conditions
+4. **Participate**: Admin locks 500 JPMD in the same swap
+5. **Claim**: User reveals the secret preimage to claim JPMD, which automatically allows admin to claim USDX
+
+
+C:\XFT\ai\deploy-factory>npx hardhat run scripts/run-swap.js --network sepolia
+Swap complete. 500 USDX for 500 JPMD, atomic and trustless.
